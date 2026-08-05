@@ -1,3 +1,63 @@
-<div id="">
 
+<link rel="stylesheet" href="cadastro.css">
+
+<div id="div-form">
+    <h2>Cadastro de Clientes</h2>
+    
+    <form id="formulario">
+        
+        <label for="nome">Nome </label>
+        <input type="text" name="nome" id="nome" [(ngModel)]="cliente.nome" required placeholder="Digite seu nome completo">
+
+        
+        <label for="email">E-mail </label>
+        <input type="email" name="email" id="email" [(ngModel)]="cliente.email" required placeholder="exemplo@email.com">
+
+        
+        <label for="cpf">CPF </label>
+        <input type="text" name="cpf" id="cpf" [(ngModel)]="cliente.cpf" required placeholder="000.000.000-00">
+
+        
+        <label for="dataNascimento">Data de Nascimento </label>
+        <input type="date" name="dataNascimento" id="dataNascimento" [(ngModel)]="cliente.dataNascimento" required>
+
+        
+        <label for="uf">UF </label>
+        <select name="uf" id="uf" [(ngModel)]="cliente.uf" required>
+            <option value="" disabled selected>Selecione a UF</option>
+            <option value="SE">Sergipe (SE)</option>
+            <option value="AL">Alagoas (AL)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="SP">São Paulo (SP)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            
+        </select>
+
+        
+        <label for="municipio">Cidade </label>
+        <select name="cidade" id="cidade" class="elem-form-02">
+            <option value="">Cidade</option>
+            <option value="Aracaju">Aracaju</option>
+            <option value="Carmopolis">Carmópolis</option>
+            <option value="Maruim">Maruim</option>
+
+        </select>
+       
+        <div id="div-btns">
+            <button type="submit" id="btnAdd" (click)="addCliente()">Cadastrar Cliente</button>
+            
+        </div>
+    </form>
+
+    
+    <div id="div-listaPessoa">
+        <h3>Clientes Cadastrados</h3>
+        
+        
+            <div class="div-pessoa">
+            </div>
+        
+            <div class="div-pessoa">Nenhum cliente cadastrado!</div>
+       
+    </div>
 </div>
