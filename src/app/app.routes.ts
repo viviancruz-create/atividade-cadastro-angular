@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { Formulario } from './formulario/formulario';
-import { HomeComponent } from './component/home-component/home-component';
+import { HomeComponent } from './home-component/home-component';
 
 
 export const routes: Routes = [
