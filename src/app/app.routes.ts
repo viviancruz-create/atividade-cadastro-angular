@@ -6,7 +6,7 @@ import { HomeComponent } from './home-component/home-component';
 export const routes: Routes = [
     {
         path:'',
-        redirecto: 'home',
+        redirectTo: 'home',
         pathMatch: 'full'
     },
    
