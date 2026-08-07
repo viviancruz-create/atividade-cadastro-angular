@@ -24,6 +24,38 @@ export class Formulario {
 
   constructor(private route: ActivatedRoute, private pessoaService: PessoaService) { }
 
+  limpaAtributos() {
+    this.nome = ''
+    this.email = ''
+    this.cpf = ''
+    this.dataNascimento = ''
+  }
+
+  carregaAtributos(pessoa: Pessoa) {
+    this.nome = String(pessoa.nome)
+    this.email = String(pessoa.email)
+    this.cpf = String(pessoa.cpf)
+    this.dataNascimento = String(pessoa.dataNascimento)
+  }
+
+  ngOnInit() {
+    const idPessoa = this.route.snapshot.paramMap.get('id')
+
+    this.idPessoaEdit = Number(idPessoa)
+
+    if (idPessoa) {
+      this.edit = true
+
+      this.pessoaService.buscarPorId(Number(idPessoa))
+        .subscribe(objPessoa => {
+          if (objPessoa) {
+            this.carregaAtributos({ ...objPessoa })
+          }
+        })
+    }
+
+  }
+
   save(){
     
     const pessoa = new Pessoa()
