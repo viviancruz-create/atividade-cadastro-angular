@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PessoaService } from '../services/pessoa-service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -11,24 +12,57 @@ import { PessoaService } from '../services/pessoa-service';
   styleUrl: './formulario.css',
 })
 export class Formulario {
-  id = 0
   nome = ''
   email= ''
   cpf= ''
   dataNascimento= ''
+  uf= ''
+  municipio= ''
+  idPessoaEdit = 0
+  edit = false
 
-  constructor(private pessoasService: PessoaService){}
+
+  constructor(private route: ActivatedRoute, private pessoaService: PessoaService) { }
 
   save(){
     
-    console.log(this.nome, this.email, this.cpf, this.dataNascimento)
+    const pessoa = new Pessoa()
+    pessoa.nome = this.nome
+    pessoa.email = this.email
+    pessoa.cpf = this.cpf
+    pessoa.dataNascimento = this.dataNascimento
+
+    if (this.edit) {
+      pessoa.id = this.idPessoaEdit
+      this.pessoaService.editar(pessoa)
+      this.edit = false
+    } else{
+      pessoa.id = this.pessoasService.listar().length +1,
+     
+      this.pessoasService.adicionar(
+      
+      /*  {
+      
+        nome: this.nome,
+        cpf: this.cpf,
+        email: this.email,
+        dataNascimento: this.dataNascimento,
+      )
+    } */
     
-    this.pessoasService.adicionar({
-      id: 0,
-      nome: this.nome,
-      cpf: this.cpf,
-      email: this.email,
-      dataNascimento: this.dataNascimento,
-    })
+      )
+   
+    }
+
+    this.limparAtributos()
+  }
+
+  limparAtributos() {
+    this.nome = ''
+    this.email = ''
+    this.cpf = ''
+    this.dataNascimento = ''
+    this.uf= ''
+    this.municipio= ''
   }
 }

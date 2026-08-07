@@ -1,0 +1,27 @@
+<div id="div-lista">
+    <h1>Clientes Cadastrados </h1>
+
+    <div id="div-lista-pessoas">
+        <!-- Mude de listaPessoa() para listaPessoa -->
+@for(elem of listaPessoa; track elem.id) {
+    <!-- seu conteúdo aqui -->
+  
+            <div class="div-item-pessoa">
+                <span class="item-pessoa">
+                    {{elem.id}} - {{elem.nome}} - {{elem.cpf}} - {{elem.dataNascimento}} - {{elem.email}} 
+                </span>
+                <span class="btns-lista">
+                    <a href="#" class="lnk-editar"> Editar </a>
+                    <a href="#" class="lnk-excluir"> Excluir </a>
+                </span>
+            </div>
+        }@empty{
+            <div class="div-item-pessoa">
+                Nenhum cliente cadastrado!
+            </div>
+        }
+
+    </div>
+
+
+</div>
