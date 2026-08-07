@@ -56,13 +56,12 @@ export class Formulario {
 
     this.limparAtributos()
   }
-
-  limparAtributos() {
-    this.nome = ''
-    this.email = ''
-    this.cpf = ''
-    this.dataNascimento = ''
-    this.uf= ''
-    this.municipio= ''
+ 
+  alterar(pessoa: Pessoa) {
+    if (confirm("Tem certeza que deseja Excluir a Pessoa?")) {
+      this.pessoaService.editar(pessoa)
+ 
   }
+}
+
 }
