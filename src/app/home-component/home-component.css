@@ -1,0 +1,26 @@
+#div-home {
+    text-align: center;
+    margin: 200px auto 30px auto;
+    padding: 150px;
+    max-width: 1000px;
+    background-color: #fff9f0; /* Fundo creme bem suave */
+    border: 8px solid var(--cor-amarelo-destaque);
+    border-left: 8px solid var(--cor-laranja-principal);
+    border-right:8px solid var(--cor-laranja-principal) ;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  #div-home > span {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-size: 5rem;
+    font-weight: 600;
+    color: var(--cor-laranja-principal);
+    text-transform: uppercase;
+  }
+  
+  #tito-pessoa {
+    color: #f0e549; /* Amarelo/Laranja queimado para dar contraste */
+    font-weight: 900;
+    margin-left: 8px;
+  }

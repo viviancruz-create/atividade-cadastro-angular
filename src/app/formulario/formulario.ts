@@ -1,26 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { PessoaService } from '../services/pessoa-service';
+import { PessoaService } from '../../services/pessoa-service';
+import { Pessoa } from '../../models/pessoa';
 import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-formulario',
-  imports: [RouterLink, RouterOutlet, FormsModule],
+  imports: [FormsModule],
   templateUrl: './formulario.html',
   styleUrl: './formulario.css',
 })
 export class Formulario {
   nome = ''
-  email= ''
-  cpf= ''
-  dataNascimento= ''
-  uf= ''
-  municipio= ''
+  email = ''
+  cpf = ''
+  dataNascimento = ''
   idPessoaEdit = 0
   edit = false
-
 
   constructor(private route: ActivatedRoute, private pessoaService: PessoaService) { }
 
@@ -56,8 +53,8 @@ export class Formulario {
 
   }
 
-  save(){
-    
+  save() {
+
     const pessoa = new Pessoa()
     pessoa.nome = this.nome
     pessoa.email = this.email
@@ -68,32 +65,29 @@ export class Formulario {
       pessoa.id = this.idPessoaEdit
       this.pessoaService.editar(pessoa)
       this.edit = false
-    } else{
-      pessoa.id = this.pessoasService.listar().length +1,
-     
-      this.pessoasService.adicionar(
-      
-      /*  {
-      
-        nome: this.nome,
-        cpf: this.cpf,
-        email: this.email,
-        dataNascimento: this.dataNascimento,
-      )
-    } */
-    
-      )
-   
+    } else {
+      pessoa.id = this.pessoaService.tamanhoArray() + 1, //ARMENGUE PARA GERAR ID
+
+        this.pessoaService.adicionar(
+          pessoa
+          /*{
+          id: this.pessoaService.tamanhoArray() + 1, //ARMENGUE PARA GERAR ID
+          nome: this.nome,
+          cpf: this.cpf,
+          email: this.email,
+          dataNascimento: this.dataNascimento
+        }*/
+
+        )
     }
 
-    this.limparAtributos()
+    this.limpaAtributos()
   }
- 
+
   alterar(pessoa: Pessoa) {
     if (confirm("Tem certeza que deseja Excluir a Pessoa?")) {
       this.pessoaService.editar(pessoa)
- 
+    }
   }
-}
 
 }
