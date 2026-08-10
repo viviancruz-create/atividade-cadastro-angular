@@ -3,38 +3,40 @@ import { Pessoa } from '../models/pessoa';
 import { of } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class PessoaService {
-    private pessoas : Pessoa[] = []
+  private pessoas: Pessoa[] = []
 
-    tamanhoArray() {
-        return this.pessoas.length
-    }    
+  tamanhoArray() {
+    return this.pessoas.length
+  }
 
-    adicionar(pessoa : Pessoa){
-        this.pessoas.push(pessoa)
-    }
+  adicionar(pessoa: Pessoa) {
+    this.pessoas.push(pessoa)
+  }
 
-    listar(): Pessoa[] {
-        return this.pessoas
-    }
+  listar(): Pessoa[] {
+    return this.pessoas
+  }
 
-    buscarPorId(id: number) {
-        const pessoa = this.pessoas.find(elem => elem.id == id)
-        
-        return of(pessoa)
-      }
-
-      editar(pessoa: Pessoa) {
-        const posArray = this.pessoas.findIndex(elem => elem.id === pessoa.id)
+  buscarPorId(id: number) {
+    const pessoa = this.pessoas.find(elem => elem.id == id)
     
-        if (posArray !== -1) {
-          this.pessoas[posArray] = pessoa
-        }
-    }
+    return of(pessoa)
+  }
 
-    excluir(id: number) {
-      this.pessoas = this.pessoas.filter(elem => elem.id !== id)
-    }  
+  editar(pessoa: Pessoa) {
+    const posArray = this.pessoas.findIndex(elem => elem.id === pessoa.id)
+
+    if (posArray !== -1) {
+      this.pessoas[posArray] = pessoa
+    }
+  }
+
+  excluir(id: number) {
+    this.pessoas = this.pessoas.filter(elem => elem.id !== id)
+  }
+
+
 }

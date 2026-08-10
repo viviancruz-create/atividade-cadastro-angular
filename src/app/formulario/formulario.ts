@@ -1,9 +1,8 @@
+import { PessoaService } from '../services/pessoa-service';
+import { Pessoa } from '../models/pessoa';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { PessoaService } from '../../services/pessoa-service';
-import { Pessoa } from '../../models/pessoa';
 import { ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-formulario',
@@ -44,7 +43,7 @@ export class Formulario {
       this.edit = true
 
       this.pessoaService.buscarPorId(Number(idPessoa))
-        .subscribe(objPessoa => {
+      .subscribe((objPessoa: Pessoa | undefined) => {
           if (objPessoa) {
             this.carregaAtributos({ ...objPessoa })
           }
@@ -85,7 +84,7 @@ export class Formulario {
   }
 
   alterar(pessoa: Pessoa) {
-    if (confirm("Tem certeza que deseja Excluir a Pessoa?")) {
+    if (confirm ("Tem certeza que deseja Excluir a Pessoa?")) {
       this.pessoaService.editar(pessoa)
     }
   }

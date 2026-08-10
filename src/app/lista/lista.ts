@@ -1,29 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { PessoaService } from '../services/pessoa-service';
-import { Pessoa } from '../models/pessoa'; // Certifique-se de que o caminho existe!
+import { Pessoa } from '../models/pessoa';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista',
-  standalone: true,
-  imports: [RouterLink, RouterOutlet, FormsModule],
+  imports: [],
   templateUrl: './lista.html',
   styleUrl: './lista.css',
 })
-export class Lista implements OnInit {
-  // Propriedade para armazenar o array
-  listaPessoa: Pessoa[] = [];
+export class Lista {
 
-  constructor(private pessoaService: PessoaService) {}
+  constructor(private router: Router, private pessoaService: PessoaService) { }
 
-  // Implementação obrigatória do OnInit
-  ngOnInit(): void {
-    this.carregarPessoas();
+  listaPessoa() {
+    return this.pessoaService.listar()
   }
 
-  // Método renomeado para não conflitar com a propriedade listaPessoa
-  carregarPessoas(): void {
-    this.listaPessoa = this.pessoaService.listar();
+  exluir(pObjPessoa: Pessoa) {
+    if (confirm("Tem certeza que deseja Excluir a Pessoa?")) {
+      this.pessoaService.excluir(Number(pObjPessoa.id))
+    }
+
+    this.listaPessoa()
   }
+
+  buscarPorId(pObjPessoa: Pessoa) {
+    this.router.navigate(['/cadastro', pObjPessoa.id])
+  }
+
+
+
 }
+
+

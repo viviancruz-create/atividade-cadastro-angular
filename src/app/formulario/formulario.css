@@ -14,55 +14,57 @@
     --cor-texto-escuro: #333333;
     --cor-borda: #e0e0e0;
     
-    /* Sombras e Efeitos */
+    /* Botão Secundário / Cancelar */
+    --cor-cinza-btn: #757575;
+    --cor-cinza-btn-hover: #616161;
+  
+    /* Sombras e Bordas */
     --sombra-card: 0 8px 24px rgba(255, 111, 0, 0.15);
-    --sombra-hover: 0 4px 12px rgba(255, 111, 0, 0.3);
+    --sombra-hover: 0 4px 12px rgba(255, 111, 0, 0.25);
     --raio-borda: 8px;
   }
   
+  /* Base da página */
+  body {
+    background-color: var(--cor-fundo-pagina);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--cor-texto-escuro);
+    margin: 0;
+    padding: 20px;
+  }
+  
   /* ===================================================
-     ESTILOS GERAIS DO CONTAINER
+     CONTAINER PRINCIPAL (#div-form)
      =================================================== */
   #div-form {
     max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
+    margin: 30px auto;
+    padding: 32px;
     background-color: var(--cor-branco);
     border-radius: var(--raio-borda);
     box-shadow: var(--sombra-card);
     border-top: 6px solid var(--cor-laranja-principal);
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    color: var(--cor-texto-escuro);
-  }
-  
-  #div-form h2 {
-    text-align: center;
-    color: var(--cor-laranja-principal);
-    margin-bottom: 25px;
-    font-size: 1.8rem;
   }
   
   /* ===================================================
      ESTILOS DO FORMULÁRIO E INPUTS
      =================================================== */
-  #formulario {
+  #form-pessoa {
     display: flex;
     flex-direction: column;
   }
   
-  #formulario label {
+  #form-pessoa label {
     font-weight: 600;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 14px;
+    margin-bottom: 6px;
     font-size: 0.9rem;
-    color: #555;
+    color: #444;
   }
   
-  /* Estilização conjunta dos Inputs e Select */
-  #formulario input[type="text"],
-  #formulario input[type="email"],
-  #formulario input[type="date"],
-  #formulario select {
+  /* Estilização para as classes dos inputs e selects */
+  .elem-form-01,
+  .elem-form-02 {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid var(--cor-borda);
@@ -71,68 +73,73 @@
     background-color: #fafafa;
     transition: all 0.3s ease;
     box-sizing: border-box;
+    color: var(--cor-texto-escuro);
   }
   
-  /* Efeito ao clicar/focar no campo */
-  #formulario input:focus,
-  #formulario select:focus {
+  /* Remove as setinhas padrão do input do tipo number */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  /* Efeito de Foco (Amarelo / Laranja) */
+  .elem-form-01:focus,
+  .elem-form-02:focus {
     outline: none;
     border-color: var(--cor-amarelo-destaque);
     background-color: var(--cor-branco);
-    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.35);
   }
   
   /* ===================================================
-     BOTÃO DE CADASTRO
+     BOTÕES (#div-btns)
      =================================================== */
   #div-btns {
-    margin-top: 25px;
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
   }
   
-  #btnAdd {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, var(--cor-amarelo-destaque), var(--cor-laranja-principal));
-    color: var(--cor-branco);
+  #div-btns button {
+    flex: 1;
+    padding: 12px;
     border: none;
     border-radius: var(--raio-borda);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  }
+  
+  /* Botão Salvar / Alterar (Laranja com Amarelo em Gradiente) */
+  #btnSalvar {
+    background: linear-gradient(135deg, var(--cor-amarelo-destaque), var(--cor-laranja-principal));
+    color: var(--cor-branco);
     box-shadow: var(--sombra-hover);
   }
   
-  #btnAdd:hover {
+  #btnSalvar:hover {
     background: linear-gradient(135deg, var(--cor-laranja-principal), var(--cor-laranja-hover));
     transform: translateY(-2px);
   }
   
-  #btnAdd:active {
+  /* Botão Limpar (Contraste neutro/suave) */
+  #btnLimpar {
+    background-color: #eee;
+    color: #555;
+  }
+  
+  #btnLimpar:hover {
+    background-color: var(--cor-cinza-btn);
+    color: var(--cor-branco);
+    transform: translateY(-2px);
+  }
+  
+  #btnSalvar:active,
+  #btnLimpar:active {
     transform: translateY(0);
-  }
-  
-  /* ===================================================
-     LISTA DE CLIENTES
-     =================================================== */
-  #div-listaPessoa {
-    margin-top: 35px;
-    padding-top: 20px;
-    border-top: 2px dashed var(--cor-amarelo-destaque);
-  }
-  
-  #div-listaPessoa h3 {
-    color: var(--cor-laranja-hover);
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-  }
-  
-  .div-pessoa {
-    padding: 12px 16px;
-    background-color: var(--cor-amarelo-suave);
-    border-left: 4px solid var(--cor-amarelo-destaque);
-    border-radius: 4px;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    color: #666;
   }

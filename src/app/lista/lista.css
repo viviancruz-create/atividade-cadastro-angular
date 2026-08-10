@@ -1,0 +1,146 @@
+/* ===================================================
+   DEFINIÇÃO DAS VARIÁVEIS DE CORES (:root)
+   =================================================== */
+   :root {
+    /* Cores Principais */
+    --cor-laranja-principal: #ff6f00;
+    --cor-laranja-hover: #e65100;
+    --cor-amarelo-destaque: #ffc107;
+    --cor-amarelo-suave: #fff8e1;
+    
+    /* Status / Ações */
+    --cor-editar: #2196f3;
+    --cor-editar-hover: #1976d2;
+    --cor-excluir: #f44336;
+    --cor-excluir-hover: #d32f2f;
+  
+    /* Neutros e Estrutura */
+    --cor-branco: #ffffff;
+    --cor-fundo-pagina: #f5f5f5;
+    --cor-texto-escuro: #333333;
+    --cor-borda: #e0e0e0;
+  
+    /* Sombras e Bordas */
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --sombra-hover: 0 6px 16px rgba(255, 111, 0, 0.15);
+    --raio-borda: 8px;
+  }
+  
+  /* ===================================================
+     CONTAINER DA LISTA (#div-lista)
+     =================================================== */
+  #div-lista {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: var(--cor-branco);
+    border-radius: var(--raio-borda);
+    box-shadow: 0 8px 24px rgba(255, 111, 0, 0.12);
+    border-top: 6px solid var(--cor-laranja-principal);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  #div-lista h1 {
+    text-align: center;
+    color: var(--cor-laranja-principal);
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+  }
+  
+  /* ===================================================
+     LISTA E ITENS (#div-lista-pessoas e .div-item-pessoa)
+     =================================================== */
+  #div-lista-pessoas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* Card de cada Pessoa */
+  .div-item-pessoa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: #fafafa;
+    border: 1px solid var(--cor-borda);
+    border-left: 5px solid var(--cor-amarelo-destaque);
+    border-radius: var(--raio-borda);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .div-item-pessoa:hover {
+    background-color: var(--cor-amarelo-suave);
+    border-left-color: var(--cor-laranja-principal);
+    transform: translateX(4px);
+    box-shadow: var(--sombra-card);
+  }
+  
+  /* Texto dos Dados da Pessoa */
+  .item-pessoa {
+    font-size: 0.95rem;
+    color: var(--cor-texto-escuro);
+    font-weight: 500;
+    line-height: 1.4;
+    word-break: break-word; /* Evita que o e-mail quebre o layout */
+    padding-right: 15px;
+  }
+  
+  /* ===================================================
+     BOTÕES DE AÇÃO (.btns-lista, .lnk-editar, .lnk-excluir)
+     =================================================== */
+  .btns-lista {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0; /* Impede que os botões espremam */
+  }
+  
+  .lnk-editar,
+  .lnk-excluir {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  
+  /* Botão Editar */
+  .lnk-editar {
+    background-color: #e3f2fd;
+    color: var(--cor-editar-hover);
+    border: 1px solid #bbdefb;
+  }
+  
+  .lnk-editar:hover {
+    background-color: var(--cor-editar);
+    color: var(--cor-branco);
+  }
+  
+  /* Botão Excluir */
+  .lnk-excluir {
+    background-color: #ffebee;
+    color: var(--cor-excluir-hover);
+    border: 1px solid #ffcdd2;
+  }
+  
+  .lnk-excluir:hover {
+    background-color: var(--cor-excluir);
+    color: var(--cor-branco);
+  }
+  
+  /* Mensagem de Lista Vazia (@empty) */
+  .div-item-pessoa:only-child {
+    justify-content: center;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    background-color: #f9f9f9;
+    border-left-color: var(--cor-borda);
+  }
